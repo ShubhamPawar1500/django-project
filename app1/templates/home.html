@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     <style>
+          body{
+               background-color: #ff005a;
+          }
+     </style>
+     
+</head>
+<body>
+     <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <!-- <a class="navbar-brand" href="#"></a> -->
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="{% url 'home' %}">home</a></li>
+              <li><a href="{% url 'user' %}">Users</a></li>
+               <li><a href="{% url 'upload_user' %}">Upload user</a></li>
+               <li><a href="{% url 'foodpage' %}">Foods</a></li>
+               <li><a href="{% url 'upload_food' %}">Upload Foods</a></li>
+               <li><a href="{% url 'upload_review' %}">Upload review</a></li>
+               {% if user.is_authenticated %}
+               <li><a href=""><b> Welcome, {{user.username}}</b></a></li>
+               <li><a href="{% url 'logout' %}">Logout</a></li>
+               {%endif%}
+            </ul>
+          </div>
+        </nav>
+<nav><ul>
+     {%block content%}
+</ul></nav>
+<table class="table">
+     <tr>
+          <th>FoodId</th>
+          <th>Customer Name</th>
+          <th>Ratings</th>
+          <th></th>
+          <th></th>
+     </tr>
+     <tr>
+{% for i in review %}
+     <td>{{i.foodid_id}}</td>
+     <td>{{i.cutomername_id}}</td>
+     <td>{{i.rating}}</td>
+     <td><a href="edit/{{i.id}}">edit</a></td>
+     <td><a href="delete/{{i.id}}">delete</a></td>
+     </tr>
+{%endfor%}
+</table>
+{%endblock%}
+</body>
+</html>

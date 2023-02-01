@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          body{
+               background-color: #ff005a;
+          }
+          div{
+               margin-left: 570px;
+               margin-top: 200px;
+          }
+     </style>
+</head>
+<body>
+     <div>
+          <form action="" method="post">
+               {% csrf_token %}
+               <table>{{login.as_table}}</table>
+               <input type="submit">
+          </form>
+          <p>Register here.. <a href="{% url 'registerpage' %}">click here</a></p>
+          </div>
+     
+</body>
+</html>
